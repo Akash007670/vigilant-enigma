@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #fbfbfa;
+  --color-navy: #060b1e;
+  --color-midnight: #111936;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-ivory font-sans text-navy antialiased;
+  }
+
+  ::selection {
+    @apply bg-navy text-ivory;
+  }
+
+  :focus-visible {
+    outline: 2px solid #060b1e;
+    outline-offset: 3px;
+  }
+
+  .dark-surface :focus-visible {
+    outline-color: #fbfbfa;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 48s linear infinite;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+  transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
